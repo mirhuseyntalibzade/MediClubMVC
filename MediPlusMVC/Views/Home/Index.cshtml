@@ -1,59 +1,30 @@
-﻿<!-- Slider Area -->
+﻿@using MediPlusMVC.ViewModels;
+@using MediPlusMVC.Models;
+@model HomeVM
+
+<!-- Slider Area -->
 <section class="slider">
     <div class="hero-slider">
         <!-- Start Single Slider -->
-        <div class="single-slider" style="background-image:url('img/slider2.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="text">
-                            <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
-                            <div class="button">
-                                <a href="#" class="btn">Get Appointment</a>
-                                <a href="#" class="btn primary">Learn More</a>
+        @foreach (SliderItem item in Model.SliderItems)
+        {
+            <div class="single-slider" style="background-image:url('img/@item.ImagePath')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="text">
+                                <h1>@item.Title</h1>
+                                <p>@item.Description</p>
+                                <div class="button">
+                                    <a href="#" class="btn">Get Appointment</a>
+                                    <a href="#" class="btn primary">Learn More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End Single Slider -->
-        <!-- Start Single Slider -->
-        <div class="single-slider" style="background-image:url('img/slider.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="text">
-                            <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
-                            <div class="button">
-                                <a href="#" class="btn">Get Appointment</a>
-                                <a href="#" class="btn primary">About Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Start End Slider -->
-        <!-- Start Single Slider -->
-        <div class="single-slider" style="background-image:url('img/slider3.jpg')">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="text">
-                            <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
-                            <div class="button">
-                                <a href="#" class="btn">Get Appointment</a>
-                                <a href="#" class="btn primary">Conatct Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
         <!-- End Single Slider -->
     </div>
 </section>
@@ -174,8 +145,23 @@
 <div id="fun-facts" class="fun-facts section overlay">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Fun -->
+            @foreach (var item in Model.HospitalFacts)
+            {
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Fun -->
+                    <div class="single-fun">
+                        <i class="@item.IconClass"></i>
+                        <div class="content">
+                            <span class="counter">@item.Count</span>
+                            <p>@item.Title</p>
+                        </div>
+                    </div>
+                    <!-- End Single Fun -->
+                </div>
+            }
+            <!--
+                <div class="col-lg-3 col-md-6 col-12">
+
                 <div class="single-fun">
                     <i class="icofont icofont-home"></i>
                     <div class="content">
@@ -183,10 +169,10 @@
                         <p>Hospital Rooms</p>
                     </div>
                 </div>
-                <!-- End Single Fun -->
+
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Fun -->
+
                 <div class="single-fun">
                     <i class="icofont icofont-user-alt-3"></i>
                     <div class="content">
@@ -194,10 +180,10 @@
                         <p>Specialist Doctors</p>
                     </div>
                 </div>
-                <!-- End Single Fun -->
+
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Fun -->
+
                 <div class="single-fun">
                     <i class="icofont-simple-smile"></i>
                     <div class="content">
@@ -205,10 +191,10 @@
                         <p>Happy Patients</p>
                     </div>
                 </div>
-                <!-- End Single Fun -->
+
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Fun -->
+
                 <div class="single-fun">
                     <i class="icofont icofont-table"></i>
                     <div class="content">
@@ -216,8 +202,8 @@
                         <p>Years of Experience</p>
                     </div>
                 </div>
-                <!-- End Single Fun -->
-            </div>
+
+            </div>-->
         </div>
     </div>
 </div>
@@ -439,90 +425,91 @@
             </div>
         </div>
         <div class="row">
-            <!-- Single Table -->
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
-                    <!-- Table Head -->
-                    <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont icofont-ui-cut"></i>
+            @foreach (Service item in Model.Services)
+            {
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="single-table">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <div class="icon">
+                                <i class="icofont icofont-ui-cut"></i>
+                            </div>
+                            <h4 class="title">Plastic Suggery</h4>
+                            <div class="price">
+                                <p class="amount">$199<span>/ Per Visit</span></p>
+                            </div>
                         </div>
-                        <h4 class="title">Plastic Suggery</h4>
-                        <div class="price">
-                            <p class="amount">$199<span>/ Per Visit</span></p>
+                        <!-- Table List -->
+                        <ul class="table-list">
+                            <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                            <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Nullam interdum enim</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
+                        </ul>
+                        <div class="table-bottom">
+                            <a class="btn" href="#">Book Now</a>
                         </div>
+                        <!-- Table Bottom -->
                     </div>
-                    <!-- Table List -->
-                    <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Nullam interdum enim</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
-                    </div>
-                    <!-- Table Bottom -->
                 </div>
-            </div>
+            }
+            <!-- Single Table -->
             <!-- End Single Table-->
             <!-- Single Table -->
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
-                    <!-- Table Head -->
-                    <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont icofont-tooth"></i>
-                        </div>
-                        <h4 class="title">Teeth Whitening</h4>
-                        <div class="price">
-                            <p class="amount">$299<span>/ Per Visit</span></p>
-                        </div>
-                    </div>
-                    <!-- Table List -->
-                    <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
-                    </div>
-                    <!-- Table Bottom -->
-                </div>
-            </div>
-            <!-- End Single Table-->
-            <!-- Single Table -->
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
-                    <!-- Table Head -->
-                    <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont-heart-beat"></i>
-                        </div>
-                        <h4 class="title">Heart Suggery</h4>
-                        <div class="price">
-                            <p class="amount">$399<span>/ Per Visit</span></p>
+            <!--<div class="col-lg-4 col-md-12 col-12">
+                        <div class="single-table">
+
+                            <div class="table-head">
+                                <div class="icon">
+                                    <i class="icofont icofont-tooth"></i>
+                                </div>
+                                <h4 class="title">Teeth Whitening</h4>
+                                <div class="price">
+                                    <p class="amount">$299<span>/ Per Visit</span></p>
+                                </div>
+                            </div>
+
+                            <ul class="table-list">
+                                <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                                <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                                <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
+                                <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
+                                <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
+                            </ul>
+                            <div class="table-bottom">
+                                <a class="btn" href="#">Book Now</a>
+                            </div>
+
                         </div>
                     </div>
-                    <!-- Table List -->
-                    <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-                        <li><i class="icofont icofont-ui-check"></i>Donec ultricies metus</li>
-                        <li><i class="icofont icofont-ui-check"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
+                    <div class="col-lg-4 col-md-12 col-12">
+                        <div class="single-table">
+
+                            <div class="table-head">
+                                <div class="icon">
+                                    <i class="icofont-heart-beat"></i>
+                                </div>
+                                <h4 class="title">Heart Suggery</h4>
+                                <div class="price">
+                                    <p class="amount">$399<span>/ Per Visit</span></p>
+                                </div>
+                            </div>
+
+                            <ul class="table-list">
+                                <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                                <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                                <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
+                                <li><i class="icofont icofont-ui-check"></i>Donec ultricies metus</li>
+                                <li><i class="icofont icofont-ui-check"></i>Pellentesque eget nibh</li>
+                            </ul>
+                            <div class="table-bottom">
+                                <a class="btn" href="#">Book Now</a>
+                            </div>
+
+                        </div>
                     </div>
-                    <!-- Table Bottom -->
-                </div>
-            </div>
-            <!-- End Single Table-->
+                    -->
         </div>
     </div>
 </section>
@@ -540,54 +527,57 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Single Blog -->
-                <div class="single-news">
-                    <div class="news-head">
-                        <img src="~/img/blog1.jpg" alt="#">
-                    </div>
-                    <div class="news-body">
-                        <div class="news-content">
-                            <div class="date">22 Aug, 2020</div>
-                            <h2><a href="blog-single.html">We have annnocuced our new product.</a></h2>
-                            <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+            @foreach (Blog item in Model.Blogs)
+            {
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Blog -->
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="~/img/blog1.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">22 Aug, 2020</div>
+                                <h2><a href="blog-single.html">We have annnocuced our new product.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
                         </div>
                     </div>
+                    <!-- End Single Blog -->
                 </div>
-                <!-- End Single Blog -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Single Blog -->
-                <div class="single-news">
-                    <div class="news-head">
-                        <img src="~/img/blog2.jpg" alt="#">
-                    </div>
-                    <div class="news-body">
-                        <div class="news-content">
-                            <div class="date">15 Jul, 2020</div>
-                            <h2><a href="blog-single.html">Top five way for solving teeth problems.</a></h2>
-                            <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+            }
+            <!--<div class="col-lg-4 col-md-6 col-12">
+
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="~/img/blog2.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">15 Jul, 2020</div>
+                                <h2><a href="blog-single.html">Top five way for solving teeth problems.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-                <!-- End Single Blog -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Single Blog -->
-                <div class="single-news">
-                    <div class="news-head">
-                        <img src="~/img/blog3.jpg" alt="#">
-                    </div>
-                    <div class="news-body">
-                        <div class="news-content">
-                            <div class="date">05 Jan, 2020</div>
-                            <h2><a href="blog-single.html">We provide highly business soliutions.</a></h2>
-                            <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                <div class="col-lg-4 col-md-6 col-12">
+
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="~/img/blog3.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">05 Jan, 2020</div>
+                                <h2><a href="blog-single.html">We provide highly business soliutions.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- End Single Blog -->
-            </div>
+
+            </div>-->
         </div>
     </div>
 </section>
