@@ -139,7 +139,16 @@
 						</div>
 						<div class="col-lg-2 col-12">
 							<div class="get-quote">
-								<a href="appointment.html" class="btn">Book Appointment</a>
+								@{
+									if (User.Identity.IsAuthenticated)
+									{
+										<a asp-controller="Accounts" asp-action="Logout" class="btn">Log out</a>
+									}
+									else
+									{
+										<a asp-controller="Accounts" asp-action="Register" class="btn">Log in or Register</a>
+									}
+								}
 							</div>
 						</div>
 					</div>

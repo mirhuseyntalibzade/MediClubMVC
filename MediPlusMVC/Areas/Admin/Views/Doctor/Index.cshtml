@@ -1,8 +1,15 @@
-﻿<!-- Begin Page Content -->
+﻿@using MediPlusMVC.Models;
+@model IEnumerable<Doctor>
+
+<!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+    <a asp-action="Create" asp-controller="Doctor">
+        <button class="btn btn-success mb-3">Create</button>
+    </a>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -14,23 +21,61 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <td>FirstName</td>
+                            <td>LastName</td>
+                            <td>Username</td>
+                            <td>Fincode</td>
+                            <td>Email</td>
+                            <td>PhoneNumber</td>
+                            <td>CreatedAt</td>
+                            <td>UpdatedAt</td>
+                            <td>DeletedAt</td>
+                            <td>Update</td>
+                            <td>Delete</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
+                        @foreach (Doctor item in Model)
+                        {
+                            <tr>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Username</td>
+                                <td>@item.Fincode</td>
+                                <td>@item.Email</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.CreatedAt</td>
+                                <td>@item.UpdatedAt</td>
+                                <td>@item.DeletedAt</td>
+                                <td>
+                                    <a asp-action="Update" asp-controller="Doctor" asp-route-id="@item.Id">
+                                        <button class="btn btn-warning text-white">
+                                            Update
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.isActive)
+                                        {
+                                            <a asp-action="SoftDelete" asp-controller="Doctor" asp-route-id="@item.Id">
+                                                <button class="btn btn-danger text-white">
+                                                    Soft Delete
+                                                </button>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="HardDelete" asp-controller="Doctor" asp-route-id="@item.Id">
+                                                <button class="btn btn-danger text-white">
+                                                    Hard Delete
+                                                </button>
+                                            </a>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
