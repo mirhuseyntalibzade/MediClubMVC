@@ -1,0 +1,18 @@
+﻿@using MediPlusMVC.DTO.HospitalDTO;
+@model HospitalDTO;
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="HospitalName">Hospital Name</label>
+            <input asp-for="HospitalName" type="text" class="form-control">
+            <span asp-validation-for="HospitalName"></span>
+        </div>
+        <div class="form-group">
+            <select class="form-select" multiple aria-label="multiple select example" asp-for="DoctorIds" asp-items="ViewBag.Doctors">
+                
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

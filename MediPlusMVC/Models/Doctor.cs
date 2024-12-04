@@ -9,5 +9,6 @@
         public string Email { get; set; }
         public string Username { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<HospitalDoctor> HospitalDoctors { get; set; }
     }
 }

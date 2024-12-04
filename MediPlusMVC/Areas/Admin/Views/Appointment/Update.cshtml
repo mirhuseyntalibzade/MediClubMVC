@@ -22,9 +22,11 @@
         @{
             if (!Model.isActive)
             {
-                <a asp-action="RevertSoftDelete" asp-route-itemid="@Model.Id">
-                    <button class="btn btn-primary">Revert</button>
-                </a>
+                        <button class="btn btn-primary">
+                            <a asp-controller="Hospital" asp-action="RevertSoftDelete" asp-route-id="@Model.Id">
+                                Revert
+                            </a>
+                        </button>
             }
         }
     </form>
