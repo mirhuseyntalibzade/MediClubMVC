@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <td>Hospital Name</td>
+                            <td>Doctors</td>
                             <td>CreatedAt</td>
                             <td>UpdatedAt</td>
                             <td>DeletedAt</td>
@@ -34,6 +35,32 @@
                         {
                             <tr>
                                 <td>@item.HospitalName</td>
+                                <td>
+                                    @if (item.HospitalDoctors != null && item.HospitalDoctors.Any())
+                                    {
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                   aria-expanded="false">
+                                                    Doctors
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right animated--fade-in"
+                                                     aria-labelledby="navbarDropdown">
+                                                    @foreach (var hospitalDoctor in item.HospitalDoctors)
+                                                    {
+                                                        <a class="dropdown-item" href="#">@hospitalDoctor.Doctor.Username</a>
+                                                    }
+                                                </div>
+                                            </li>
+                                        </ul>
+                                                
+                                    }
+                                    else
+                                    {
+                                        <span>No doctors assigned</span>
+                                    }
+                                </td>
                                 <td>@item.CreatedAt</td>
                                 <td>@item.UpdatedAt</td>
                                 <td>@item.DeletedAt</td>

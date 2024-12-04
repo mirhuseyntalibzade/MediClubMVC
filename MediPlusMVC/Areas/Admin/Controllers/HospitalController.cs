@@ -18,7 +18,10 @@ namespace MediPlusMVC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Hospital> hospitals = await _context.Hospitals.ToListAsync();
+            IEnumerable<Hospital> hospitals = await _context.Hospitals
+        .Include(h => h.HospitalDoctors)
+        .ThenInclude(hd => hd.Doctor)
+        .ToListAsync();
             return View(hospitals);
         }
         public IActionResult Create()

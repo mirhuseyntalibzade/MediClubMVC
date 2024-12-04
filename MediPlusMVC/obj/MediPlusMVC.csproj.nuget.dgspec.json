@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\My Computer\\source\\repos\\MediPlusMVC\\MediPlusMVC\\MediPlusMVC.csproj": {}
+    "C:\\Users\\My Computer\\Desktop\\CodeAcademy\\MediPlus\\MediPlusMVC\\MediPlusMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\My Computer\\source\\repos\\MediPlusMVC\\MediPlusMVC\\MediPlusMVC.csproj": {
+    "C:\\Users\\My Computer\\Desktop\\CodeAcademy\\MediPlus\\MediPlusMVC\\MediPlusMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\My Computer\\source\\repos\\MediPlusMVC\\MediPlusMVC\\MediPlusMVC.csproj",
+        "projectUniqueName": "C:\\Users\\My Computer\\Desktop\\CodeAcademy\\MediPlus\\MediPlusMVC\\MediPlusMVC.csproj",
         "projectName": "MediPlusMVC",
-        "projectPath": "C:\\Users\\My Computer\\source\\repos\\MediPlusMVC\\MediPlusMVC\\MediPlusMVC.csproj",
+        "projectPath": "C:\\Users\\My Computer\\Desktop\\CodeAcademy\\MediPlus\\MediPlusMVC\\MediPlusMVC.csproj",
         "packagesPath": "C:\\Users\\My Computer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\My Computer\\source\\repos\\MediPlusMVC\\MediPlusMVC\\obj\\",
+        "outputPath": "C:\\Users\\My Computer\\Desktop\\CodeAcademy\\MediPlus\\MediPlusMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
